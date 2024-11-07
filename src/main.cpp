@@ -170,8 +170,6 @@ void setup() {
   
   SPI.begin();
   Keyboard.begin();
-    
-  delay(1000);
 
   readSD();
 }

@@ -16,7 +16,7 @@ void executeCommand(String line) {
   String arg = space == -1 ? "" : line.substring(space + 1);
   
   if (command == "STRING") {
-      for (int i = 0; i < arg.length(); i++) {
+      for(size_t i = 0; i < arg.length(); i++) {
           char c = arg[i];
           switch(c) {
               case ':':
@@ -82,9 +82,39 @@ void executeCommand(String line) {
   else if (command == "REM") {
     // Comment - do nothing
   }
-  else if(command == "F11")
-  {
-    Keyboard.write(KEY_F11);
+  // Function keys
+  else if (command == "F1") {
+      Keyboard.write(KEY_F1);
+  }
+  else if (command == "F2") {
+      Keyboard.write(KEY_F2);
+  }
+  else if (command == "F3") {
+      Keyboard.write(KEY_F3);
+  }
+  else if (command == "F4") {
+      Keyboard.write(KEY_F4);
+  }
+  else if (command == "F5") {
+      Keyboard.write(KEY_F5);
+  }
+  else if (command == "F6") {
+      Keyboard.write(KEY_F6);
+  }
+  else if (command == "F7") {
+      Keyboard.write(KEY_F7);
+  }
+  else if (command == "F8") {
+      Keyboard.write(KEY_F8);
+  }
+  else if (command == "F9") {
+      Keyboard.write(KEY_F9);
+  }
+  else if (command == "F10") {
+      Keyboard.write(KEY_F10);
+  }
+  else if (command == "F12") {
+      Keyboard.write(KEY_F12);
   }
 }
 

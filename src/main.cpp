@@ -160,22 +160,13 @@ void readSD() {
 
 void readFromRAM()
 {
-  executeCommand("STRING Hugo for president");
-  executeCommand("ENTER");
-  executeCommand("STRING Hugo for president");
-  executeCommand("ENTER");
-  executeCommand("STRING Hugo for president");
-  executeCommand("ENTER");
-  executeCommand("STRING Hugo for president");
-  executeCommand("ENTER");
-  executeCommand("STRING Hugo for president");
-  executeCommand("ENTER");
-  executeCommand("STRING Hugo for president");
-  executeCommand("ENTER");
-  executeCommand("STRING Hugo for president");
-  executeCommand("ENTER");
-  executeCommand("STRING Hugo for president");
-  executeCommand("ENTER");
+    executeCommand("ALT");
+    executeCommand("F2");
+    Keyboard.releaseAll();  
+    executeCommand("DELAY 1000");     // Wait for dialog to fully open
+    executeCommand("STRING https://www.youtube.com/watch?v=Ri6f7YjX8So");
+    executeCommand("DELAY 1000");      // Small delay before Enter
+    executeCommand("ENTER");
 }
 
 void setup() {

@@ -158,14 +158,14 @@ void readSD() {
   Serial.println("\nFinished!");
 }
 
-void readFromRAM()
-{
-    executeCommand("ALT");
-    executeCommand("F2");
-    Keyboard.releaseAll();  
-    executeCommand("DELAY 1000");     // Wait for dialog to fully open
+void readFromRAM() {
+    // Windows key + R to open Run dialog
+    executeCommand("GUI r");
+    executeCommand("DELAY 500");  // Add delay to ensure Run dialog opens
+    
+    // Type URL and press enter
     executeCommand("STRING https://www.youtube.com/watch?v=b4XpMTUlorc");
-    executeCommand("DELAY 1000");      // Small delay before Enter
+    executeCommand("DELAY 100");  // Small delay before Enter for reliability
     executeCommand("ENTER");
 }
 

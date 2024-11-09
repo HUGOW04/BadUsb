@@ -9,6 +9,7 @@ File file;
 
 void readSD();
 void executeCommand(String line);
+void readFromRAM();
 
 void executeCommand(String line) {
   int space = line.indexOf(' ');
@@ -47,7 +48,6 @@ void executeCommand(String line) {
               default:
                   Keyboard.write(c);
           }
-          delay(20);
       }
   }
   else if (command == "DELAY") {
@@ -60,7 +60,6 @@ void executeCommand(String line) {
     if (arg == "r") {
       Keyboard.press(KEY_LEFT_GUI);
       Keyboard.press('r');
-      delay(50);  // Short delay before release
       Keyboard.releaseAll();
     }
   }
@@ -119,10 +118,6 @@ void executeCommand(String line) {
 }
 
 void readSD() {
-   if (!SD.begin(SD_CS_PIN)) {
-    Serial.println("SD card init failed!");
-    return;
-  }
   Serial.println("SD card initialized!");
 
   file = SD.open(fileName);
@@ -131,7 +126,6 @@ void readSD() {
     return;
   }
   Serial.println("File opened successfully!");
-
 
   const int BUFFER_SIZE = 64;
   char buffer[BUFFER_SIZE];
@@ -164,6 +158,26 @@ void readSD() {
   Serial.println("\nFinished!");
 }
 
+void readFromRAM()
+{
+  executeCommand("STRING Hugo for president");
+  executeCommand("ENTER");
+  executeCommand("STRING Hugo for president");
+  executeCommand("ENTER");
+  executeCommand("STRING Hugo for president");
+  executeCommand("ENTER");
+  executeCommand("STRING Hugo for president");
+  executeCommand("ENTER");
+  executeCommand("STRING Hugo for president");
+  executeCommand("ENTER");
+  executeCommand("STRING Hugo for president");
+  executeCommand("ENTER");
+  executeCommand("STRING Hugo for president");
+  executeCommand("ENTER");
+  executeCommand("STRING Hugo for president");
+  executeCommand("ENTER");
+}
+
 void setup() {
   Serial.begin(115200);
   Serial.println("Starting...");
@@ -171,7 +185,14 @@ void setup() {
   SPI.begin();
   Keyboard.begin();
 
-  readSD();
+  if (SD.begin(SD_CS_PIN))
+  {
+    readSD();
+  }
+  else
+  {
+    readFromRAM();
+  }
 }
 
 void loop() {
